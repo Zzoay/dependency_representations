@@ -1,9 +1,8 @@
 
 import torch
 from torch import nn
-from torch.nn import functional as F
 
-from .modules import NonLinear, Biaffine, BiLSTM
+from common_module.modules import NonLinear, Biaffine, BiLSTM
 
 
 # Biaffine: https://arxiv.org/abs/1611.01734s

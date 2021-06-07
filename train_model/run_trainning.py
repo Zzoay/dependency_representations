@@ -2,13 +2,15 @@
 import sys
 sys.path.append(".")
 
+import torch
 from torch.utils.data import DataLoader
 
-from train_model.data_helper import CTBDataset, Vocab, SortPadCollator, train_val_split
+from train_model.data_helper import CTBDataset,SortPadCollator, train_val_split
 from train_model.trainer import MyTrainer
 from train_model.parser import DependencyParser
 from train_model.metrics import arc_rel_loss, uas_las
-from utils import load_config, set_seed
+from common_module.vocab import Vocab
+from common_module.utils import load_config, set_seed
 
 
 if __name__ == "__main__":
@@ -49,6 +51,5 @@ if __name__ == "__main__":
     trainer.train(model=model, train_iter=train_iter, val_iter=val_iter)
     trainer.eval(model=model, eval_iter=val_iter)
     
-    import torch
-    torch.save(model, "parser.pt")
+    torch.save(model.state_dict(), "parser.pt")
     print("finished.")

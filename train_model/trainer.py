@@ -6,7 +6,7 @@ import torch.nn as nn
 from torch.optim import Adam
 from torch.utils.data import DataLoader
 
-from utils import to_cuda
+from common_module.utils import to_cuda
 
 
 class MyTrainer():
